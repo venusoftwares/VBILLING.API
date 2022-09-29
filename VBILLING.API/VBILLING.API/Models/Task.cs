@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Circa.Core.AppService.Models
+namespace VBILLING.API.Models
 {
-    public partial class Task
+    public partial class TaskDetails
     {
         public int Id { get; set; }
         public int UserId { get; set; }

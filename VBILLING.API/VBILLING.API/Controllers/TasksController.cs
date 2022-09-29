@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using VBILLING.API.Interfaces;
+using VBILLING.API.Models;
 using VBILLING.API.Requests;
 using VBILLING.API.Responses;
-using Task = VBILLING.API.Models.Task;
+ 
 
 namespace VBILLING.API.Controllers
 {
@@ -29,7 +30,7 @@ namespace VBILLING.API.Controllers
                 return UnprocessableEntity(getTasksResponse);
             }
 
-            var tasksResponse = getTasksResponse.Tasks.ConvertAll(o => new TaskResponse { Id = o.Id, IsCompleted = o.IsCompleted, Name = o.Name, Ts = o.Ts });
+            var tasksResponse = getTasksResponse.TaskDetails.ConvertAll(o => new TaskResponse { Id = o.Id, IsCompleted = o.IsCompleted, Name = o.Name, Ts = o.Ts });
 
             return Ok(tasksResponse);
         }
@@ -37,7 +38,7 @@ namespace VBILLING.API.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(TaskRequest taskRequest)
         {
-            var task = new Task { IsCompleted = taskRequest.IsCompleted, Ts = taskRequest.Ts, Name = taskRequest.Name, UserId = UserID };
+            var task = new TaskDetails { IsCompleted = taskRequest.IsCompleted, Ts = taskRequest.Ts, Name = taskRequest.Name, UserId = UserID };
 
             var saveTaskResponse = await taskService.SaveTask(task);
 

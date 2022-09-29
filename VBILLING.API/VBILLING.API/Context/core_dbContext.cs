@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using VBILLING.API.Models;
 
-namespace Circa.Core.AppService.Models
+namespace VBILLING.API.Context
 {
     public partial class DatabaseContext : DbContext
     {
@@ -92,7 +93,7 @@ namespace Circa.Core.AppService.Models
         public virtual DbSet<SupplyMaster> SupplyMasters { get; set; } = null!;
         public virtual DbSet<SupplyRateMaster> SupplyRateMasters { get; set; } = null!;
         public virtual DbSet<SupplyReturnMaster> SupplyReturnMasters { get; set; } = null!;
-        public virtual DbSet<Task> Tasks { get; set; } = null!;
+        public virtual DbSet<TaskDetails> TaskDetails { get; set; } = null!;
         public virtual DbSet<TaxSetting> TaxSettings { get; set; } = null!;
         public virtual DbSet<TermsAndCondition> TermsAndConditions { get; set; } = null!;
         public virtual DbSet<UnitMeasurement> UnitMeasurements { get; set; } = null!;
@@ -2622,9 +2623,9 @@ namespace Circa.Core.AppService.Models
                     .HasConstraintName("FK_SupplyReturnMaster_MeterialMaster");
             });
 
-            modelBuilder.Entity<Task>(entity =>
+            modelBuilder.Entity<TaskDetails>(entity =>
             {
-                entity.ToTable("Task");
+                entity.ToTable("TaskDetails");
 
                 entity.Property(e => e.Name).HasMaxLength(100);
 
@@ -2633,7 +2634,7 @@ namespace Circa.Core.AppService.Models
                     .HasColumnName("TS");
 
                 entity.HasOne(d => d.User)
-                    .WithMany(p => p.Tasks)
+                    .WithMany(p => p.TaskDetails)
                     .HasForeignKey(d => d.UserId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Task_User");

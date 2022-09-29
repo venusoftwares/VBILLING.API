@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Circa.Core.AppService.Models
+namespace VBILLING.API.Models
 {
     public partial class EmployeeAdvance
     {

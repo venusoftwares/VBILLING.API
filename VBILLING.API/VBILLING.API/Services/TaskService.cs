@@ -1,8 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using VBILLING.API.Context;
 using VBILLING.API.Interfaces;
 using VBILLING.API.Models;
 using VBILLING.API.Responses;
-using Task = VBILLING.API.Models.Task;
+ 
 
 namespace VBILLING.API.Services
 {
@@ -17,7 +18,7 @@ namespace VBILLING.API.Services
 
         public async Task<DeleteTaskResponse> DeleteTask(int taskId, int userId)
         {
-            var task = await tasksDbContext.Tasks.FindAsync(taskId);
+            var task = await tasksDbContext.TaskDetails.FindAsync(taskId);
 
             if (task == null)
             {
@@ -39,7 +40,7 @@ namespace VBILLING.API.Services
                 };
             }
 
-            tasksDbContext.Tasks.Remove(task);
+            tasksDbContext.TaskDetails.Remove(task);
 
             var saveResponse = await tasksDbContext.SaveChangesAsync();
 
@@ -62,7 +63,7 @@ namespace VBILLING.API.Services
 
         public async Task<GetTasksResponse> GetTasks(int userId)
         {
-            var tasks = await tasksDbContext.Tasks.Where(o => o.UserId == userId).ToListAsync();
+            var tasks = await tasksDbContext.TaskDetails.Where(o => o.UserId == userId).ToListAsync();
 
             if (tasks.Count == 0)
             {
@@ -74,13 +75,13 @@ namespace VBILLING.API.Services
                 };
             }
 
-            return new GetTasksResponse { Success = true, Tasks = tasks };
+            return new GetTasksResponse { Success = true, TaskDetails = tasks };
 
         }
 
-        public async Task<SaveTaskResponse> SaveTask(Task task)
+        public async Task<SaveTaskResponse> SaveTask(TaskDetails task)
         {
-            await tasksDbContext.Tasks.AddAsync(task);
+            await tasksDbContext.TaskDetails.AddAsync(task);
 
             var saveResponse = await tasksDbContext.SaveChangesAsync();
 

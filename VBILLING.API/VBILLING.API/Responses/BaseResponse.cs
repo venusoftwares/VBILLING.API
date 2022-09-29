@@ -1,5 +1,6 @@
 ﻿using System.Text.Json.Serialization;
-using Task = VBILLING.API.Models.Task;
+using VBILLING.API.Models;
+ 
 
 namespace VBILLING.API.Responses
 {
@@ -19,7 +20,7 @@ namespace VBILLING.API.Responses
     }
     public class GetTasksResponse : BaseResponse
     {
-        public List<Task> Tasks { get; set; }
+        public List<TaskDetails> TaskDetails { get; set; }
     }
     public class LogoutResponse : BaseResponse
     {
@@ -27,7 +28,7 @@ namespace VBILLING.API.Responses
     }
     public class SaveTaskResponse : BaseResponse
     {
-        public Task Task { get; set; }
+        public TaskDetails Task { get; set; }
     }
 
     public class SignupResponse : BaseResponse

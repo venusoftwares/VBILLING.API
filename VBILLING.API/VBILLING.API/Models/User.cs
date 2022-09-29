@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Circa.Core.AppService.Models
+namespace VBILLING.API.Models
 {
     public partial class User
     {
         public User()
         {
             RefreshTokens = new HashSet<RefreshToken>();
-            Tasks = new HashSet<Task>();
+            TaskDetails = new HashSet<TaskDetails>();
         }
 
         public int Id { get; set; }
@@ -21,6 +21,6 @@ namespace Circa.Core.AppService.Models
         public bool Active { get; set; }
 
         public virtual ICollection<RefreshToken> RefreshTokens { get; set; }
-        public virtual ICollection<Task> Tasks { get; set; }
+        public virtual ICollection<TaskDetails> TaskDetails { get; set; }
     }
 }
