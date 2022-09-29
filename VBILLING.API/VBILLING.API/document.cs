@@ -1,1 +1,3 @@
-﻿ //dotnet ef dbcontext scaffold "Server=103.196.29.171;Database=VBILLING;user id=sa; password=venu@123;" Npgsql.EntityFrameworkCore.SqlServer -o "Models" -f --context-dir "Context"  --namespace "VBILLING.API.Models" --context "DatabaseContext"
+﻿//dotnet ef dbcontext scaffold "Server=103.196.29.171;Database=VBILLING;user id=sa; password=venu@123;" Npgsql.EntityFrameworkCore.SqlServer -o "Models" -f --context-dir "Context"  --namespace "VBILLING.API.Models" --context "DatabaseContext"
+//https://docs.oracle.com/cd/E17952_01/connector-net-en/connector-net-entityframework-core-scaffold-example.html
+//https://www.learnentityframeworkcore.com/walkthroughs/existing-database

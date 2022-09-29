@@ -9,12 +9,7 @@ namespace VBILLING.API.Requests
         public string Password { get; set; }
     }
 
-    public class RefreshTokenRequest
-    {
-        public int UserId { get; set; }
-        public string RefreshToken { get; set; }
-
-    }
+   
 
     public class SignupRequest
     {
