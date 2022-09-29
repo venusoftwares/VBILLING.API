@@ -5,13 +5,13 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace Circa.Core.AppService.Models
 {
-    public partial class core_dbContext : DbContext
+    public partial class DatabaseContext : DbContext
     {
-        public core_dbContext()
+        public DatabaseContext()
         {
         }
 
-        public core_dbContext(DbContextOptions<core_dbContext> options)
+        public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options)
         {
         }

@@ -1,0 +1,1 @@
+﻿ dotnet ef dbcontext scaffold "Server=103.196.29.171;Database=VBILLING;user id=sa; password=venu@123;" Npgsql.EntityFrameworkCore.SqlServer -o "Models" -f --context-dir "Context"  --namespace "VBILLING.API.Models" --context "DatabaseContext"
